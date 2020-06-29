@@ -120,7 +120,7 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 INSERT INTO apex_objeto_ei_filtro (objeto_ei_filtro_proyecto, objeto_ei_filtro, ancho) VALUES (
 	'reportes', --objeto_ei_filtro_proyecto
 	'8000497', --objeto_ei_filtro
-	NULL  --ancho
+	'100%'  --ancho
 );
 
 ------------------------------------------------------------

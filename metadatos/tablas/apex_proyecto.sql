@@ -40,10 +40,10 @@ INSERT INTO apex_proyecto (proyecto, descripcion, descripcion_corta, estilo, con
 	'8000001', --pm_usuario
 	NULL, --usuario_subclase
 	NULL, --usuario_subclase_archivo
-	NULL, --encriptar_qs
+	'0', --encriptar_qs
 	'1', --registrar_solicitud
 	NULL, --registrar_cronometro
-	'2', --item_inicio_sesion
+	'8000069', --item_inicio_sesion
 	'8000065', --item_pre_sesion
 	NULL, --item_pre_sesion_popup
 	NULL, --item_set_sesion
@@ -56,7 +56,7 @@ INSERT INTO apex_proyecto (proyecto, descripcion, descripcion_corta, estilo, con
 	NULL, --version_detalle
 	NULL, --version_link
 	NULL, --tiempo_espera_ms
-	NULL, --navegacion_ajax
+	'0', --navegacion_ajax
 	NULL, --codigo_ga_tracker
 	TRUE, --extension_toba
 	FALSE  --extension_proyecto

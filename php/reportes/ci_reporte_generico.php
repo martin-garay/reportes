@@ -38,11 +38,12 @@ class ci_reporte_generico extends reportes_ci
 	function conf__cuadro(reportes_ei_cuadro $cuadro)
 	{
 		
-		if(isset($this->s__filtro)){
+		//if(isset($this->s__filtro)){
 
 			$cortes = $this->tabla('reporte_cortes')->get_filas();
 			$cortes = $this->ordenar_cortes($cortes);
 			if(count($cortes)>0){
+				$cuadro->set_modo_cc_tabular();	//modo del cc
 				$colapsable = $this->tabla('reporte')->get_columna('colapsar_niveles');
 				if($colapsable)				
 					$cuadro->set_cortes_colapsables();
@@ -51,7 +52,7 @@ class ci_reporte_generico extends reportes_ci
 				}
 			}									
 
-			$where = 'WHERE '.$this->dep('filtro')->get_sql_where();
+			$where = (isset($this->s__filtro)) ? 'WHERE '.$this->dep('filtro')->get_sql_where() : '';
 			$sql = "SELECT * FROM (" . $this->tabla('reporte')->get_columna('query') . ") as subconsulta $where";
 			$datos = toba::db()->consultar($sql);
 
@@ -59,7 +60,7 @@ class ci_reporte_generico extends reportes_ci
 			$columnas_a_mostrar = ($this->tabla('reporte')->get_columna('columnas') !== null) ? $this->tabla('reporte')->get_columna('columnas') : null;			
 			$cuadro->armar_cuadro_dinamico($datos,true,$columnas_a_mostrar);
 						
-		}		
+		//}		
 		$cuadro->set_titulo( $this->tabla('reporte')->get_columna('descripcion') );
 
 	}

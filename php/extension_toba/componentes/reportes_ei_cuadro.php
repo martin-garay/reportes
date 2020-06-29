@@ -54,5 +54,8 @@ class reportes_ei_cuadro extends toba_ei_cuadro
 		//$this->_cortes_modo = apex_cuadro_cc_tabular;
 		$this->_info_cuadro['cc_modo_anidado_colap'] = true;
 	}
+	function set_modo_cc_tabular(){
+		$this->_info_cuadro['cc_modo'] = apex_cuadro_cc_tabular;
+	}
 }
 ?>
