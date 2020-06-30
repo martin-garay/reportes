@@ -15,6 +15,9 @@ toba proyecto cargar -p reportes -d `pwd`
 ```
 
 ## Configuracion
+
+* [Opcional]En ambos proyectos tildar "Listar multiproyectos" desde el Toba Editor en la pestaña "Configuración básica" de las propiedades del proyecto.
+
 * En proyecto.ini configurar la varible `proyecto_usuarios` con el identificador del proyecto del cual vamos a consultar usuarios y perfiles para dar permisos a los reportes. Por defecto es el proyecto "reportes"
 ```
 [proyecto]
