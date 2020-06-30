@@ -7,7 +7,11 @@ class ci_listado_reportes extends reportes_ci
 
 	function conf__cuadro(reportes_ei_cuadro $cuadro)
 	{
-		return toba::consulta_php('parametrizacion')->get_reportes();
+		$usuario = toba::usuario()->get_id();
+		$proyecto = toba::proyecto()->get_parametro('proyecto','proyecto_usuarios');		
+		$perfiles = toba::instancia()->get_perfiles_funcionales($usuario,$proyecto);                       	
+
+        return toba::consulta_php('parametrizacion')->get_reportes_usuario($usuario, $perfiles);		
 	}
 
 	function evt__cuadro__seleccion($seleccion)

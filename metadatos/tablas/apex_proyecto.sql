@@ -6,7 +6,7 @@ INSERT INTO apex_proyecto (proyecto, descripcion, descripcion_corta, estilo, con
 	'reportes', --proyecto
 	'REPORTES', --descripcion
 	'Reportes', --descripcion_corta
-	'plastik', --estilo
+	'v2_azul', --estilo
 	'1', --con_frames
 	NULL, --frames_clase
 	NULL, --frames_archivo

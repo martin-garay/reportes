@@ -1,15 +1,15 @@
 ------------------------------------------------------------
---[8000495]--  Reportes - cuadro 
+--[18000075]--  Tipos Reportes - cuadro 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
 -- apex_objeto
 ------------------------------------------------------------
 
---- INICIO Grupo de desarrollo 8
+--- INICIO Grupo de desarrollo 18
 INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, clase_proyecto, clase, punto_montaje, subclase, subclase_archivo, objeto_categoria_proyecto, objeto_categoria, nombre, titulo, colapsable, descripcion, fuente_datos_proyecto, fuente_datos, solicitud_registrar, solicitud_obj_obs_tipo, solicitud_obj_observacion, parametro_a, parametro_b, parametro_c, parametro_d, parametro_e, parametro_f, usuario, creacion, posicion_botonera) VALUES (
 	'reportes', --proyecto
-	'8000495', --objeto
+	'18000075', --objeto
 	NULL, --anterior
 	NULL, --identificador
 	NULL, --reflexivo
@@ -20,8 +20,8 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'Reportes - cuadro', --nombre
-	'Listado de Reportes', --titulo
+	'Tipos Reportes - cuadro', --nombre
+	'Listado', --titulo
 	'0', --colapsable
 	NULL, --descripcion
 	NULL, --fuente_datos_proyecto
@@ -36,20 +36,20 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --parametro_e
 	NULL, --parametro_f
 	NULL, --usuario
-	'2019-09-20 14:26:31', --creacion
+	'2020-06-30 09:28:34', --creacion
 	'abajo'  --posicion_botonera
 );
---- FIN Grupo de desarrollo 8
+--- FIN Grupo de desarrollo 18
 
 ------------------------------------------------------------
 -- apex_objeto_eventos
 ------------------------------------------------------------
 
---- INICIO Grupo de desarrollo 8
+--- INICIO Grupo de desarrollo 18
 INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
 	'reportes', --proyecto
-	'8000638', --evento_id
-	'8000495', --objeto
+	'18000088', --evento_id
+	'18000075', --objeto
 	'seleccion', --identificador
 	'', --etiqueta
 	'1', --maneja_datos
@@ -79,14 +79,14 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	'0', --es_seleccion_multiple
 	'0'  --es_autovinculo
 );
---- FIN Grupo de desarrollo 8
+--- FIN Grupo de desarrollo 18
 
 ------------------------------------------------------------
 -- apex_objeto_cuadro
 ------------------------------------------------------------
 INSERT INTO apex_objeto_cuadro (objeto_cuadro_proyecto, objeto_cuadro, titulo, subtitulo, sql, columnas_clave, columna_descripcion, clave_dbr, archivos_callbacks, ancho, ordenar, paginar, tamano_pagina, tipo_paginado, mostrar_total_registros, eof_invisible, eof_customizado, siempre_con_titulo, exportar_paginado, exportar, exportar_rtf, pdf_propiedades, pdf_respetar_paginacion, asociacion_columnas, ev_seleccion, ev_eliminar, dao_nucleo_proyecto, dao_nucleo, dao_metodo, dao_parametros, desplegable, desplegable_activo, scroll, scroll_alto, cc_modo, cc_modo_anidado_colap, cc_modo_anidado_totcol, cc_modo_anidado_totcua) VALUES (
 	'reportes', --objeto_cuadro_proyecto
-	'8000495', --objeto_cuadro
+	'18000075', --objeto_cuadro
 	NULL, --titulo
 	NULL, --subtitulo
 	NULL, --sql
@@ -119,46 +119,24 @@ INSERT INTO apex_objeto_cuadro (objeto_cuadro_proyecto, objeto_cuadro, titulo, s
 	NULL, --desplegable_activo
 	'0', --scroll
 	NULL, --scroll_alto
-	't', --cc_modo
-	'0', --cc_modo_anidado_colap
+	NULL, --cc_modo
+	NULL, --cc_modo_anidado_colap
 	NULL, --cc_modo_anidado_totcol
 	NULL  --cc_modo_anidado_totcua
 );
 
 ------------------------------------------------------------
--- apex_objeto_cuadro_cc
-------------------------------------------------------------
-
---- INICIO Grupo de desarrollo 18
-INSERT INTO apex_objeto_cuadro_cc (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_cc, identificador, descripcion, orden, columnas_id, columnas_descripcion, pie_contar_filas, pie_mostrar_titular, pie_mostrar_titulos, imp_paginar, modo_inicio_colapsado) VALUES (
-	'reportes', --objeto_cuadro_proyecto
-	'8000495', --objeto_cuadro
-	'18000003', --objeto_cuadro_cc
-	'tipo_reporte', --identificador
-	'Tipo', --descripcion
-	'1', --orden
-	'tipo_reporte', --columnas_id
-	'tipo_reporte', --columnas_descripcion
-	'0', --pie_contar_filas
-	'0', --pie_mostrar_titular
-	'0', --pie_mostrar_titulos
-	NULL, --imp_paginar
-	'0'  --modo_inicio_colapsado
-);
---- FIN Grupo de desarrollo 18
-
-------------------------------------------------------------
 -- apex_objeto_ei_cuadro_columna
 ------------------------------------------------------------
 
---- INICIO Grupo de desarrollo 8
+--- INICIO Grupo de desarrollo 18
 INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
 	'reportes', --objeto_cuadro_proyecto
-	'8000495', --objeto_cuadro
-	'8000895', --objeto_cuadro_col
+	'18000075', --objeto_cuadro
+	'18000050', --objeto_cuadro_col
 	'descripcion', --clave
 	'1', --orden
-	'Descripcion', --titulo
+	'Descripción', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
 	NULL, --ancho
@@ -183,4 +161,4 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --grupo
 	NULL  --evento_asociado
 );
---- FIN Grupo de desarrollo 8
+--- FIN Grupo de desarrollo 18

@@ -13,7 +13,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	'8000068', --item
 	NULL, --padre_id
 	'reportes', --padre_proyecto
-	'1', --padre
+	'18000014', --padre
 	'0', --carpeta
 	'0', --nivel_acceso
 	'web', --solicitud_tipo
@@ -28,7 +28,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	'8000001', --punto_montaje
 	NULL, --actividad_accion
 	'1', --menu
-	NULL, --orden
+	'1', --orden
 	'0', --solicitud_registrar
 	NULL, --solicitud_obs_tipo_proyecto
 	NULL, --solicitud_obs_tipo
@@ -40,7 +40,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --zona_orden
 	'0', --zona_listar
 	'apex', --imagen_recurso_origen
-	NULL, --imagen
+	'sql.gif', --imagen
 	NULL, --parametro_a
 	NULL, --parametro_b
 	NULL, --parametro_c

@@ -1,12 +1,36 @@
 <?php
 class ci_abm_reportes extends reportes_ci
 {
+	protected $s__filtro;
+	
 	function relacion(){
 		return $this->dep('relacion');
 	}
 	function tabla($nombre){
 		return $this->relacion()->tabla($nombre);
+	}	
+
+	//-----------------------------------------------------------------------------------
+	//---- filtro -----------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__filtro(reportes_ei_filtro $filtro)
+	{
+
+		if(isset($this->s__filtro))
+			$filtro->set_datos($this->s__filtro);
 	}
+
+	function evt__filtro__filtrar($datos)
+	{
+		$this->s__filtro = $datos;
+	}
+
+	function evt__filtro__cancelar()
+	{
+		unset($this->s__filtro);
+	}
+
 	//-----------------------------------------------------------------------------------
 	//---- cuadro -----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
@@ -49,6 +73,11 @@ class ci_abm_reportes extends reportes_ci
 
 	function evt__form__modificacion($datos)
 	{
+		if(!isset($datos['usuario']))
+			$datos['usuario'] = toba::usuario()->get_id();
+		$datos['usuario_modificacion'] = toba::usuario()->get_id();
+		$datos['fecha_modificacion'] = date('Y-m-d H:m:s');
+
 		$this->tabla('reporte')->set($datos);		
 	}
 

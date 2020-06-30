@@ -51,10 +51,16 @@ class ci_reporte_generico extends reportes_ci
 					$cuadro->agregar_corte_control($corte);
 				}
 			}									
-
+			$fuente_datos = $this->tabla('reporte')->get_columna('fuente');
 			$where = (isset($this->s__filtro)) ? 'WHERE '.$this->dep('filtro')->get_sql_where() : '';
 			$sql = "SELECT * FROM (" . $this->tabla('reporte')->get_columna('query') . ") as subconsulta $where";
-			$datos = toba::db()->consultar($sql);
+			$sql = toba::consulta_php('parametrizacion')->reemplazar_variables($sql);
+			try {
+				$datos = toba::db($fuente_datos)->consultar($sql);	
+			} catch (toba_error_db $e) {
+				throw new toba_error_usuario("Error al generar el reporte");			
+			}
+			
 
 			//si se definio en el abm las columnas a mostrar
 			$columnas_a_mostrar = ($this->tabla('reporte')->get_columna('columnas') !== null) ? $this->tabla('reporte')->get_columna('columnas') : null;			
