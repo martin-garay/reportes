@@ -19,7 +19,7 @@ CREATE TABLE reportes
   fecha_creacion date not null default now(),
   usuario character varying(60) not null,
   usuario_modificacion character varying(60) not null,
-  fecha_modificacion date not null,
+  fecha_modificacion timestamp not null,
   CONSTRAINT pk_reportes PRIMARY KEY (id),
   CONSTRAINT fk_reporte__tiporeporte FOREIGN KEY (id_tipo_reporte)
       REFERENCES tipos_reportes (id) MATCH SIMPLE
