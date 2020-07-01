@@ -160,8 +160,8 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --carga_dt
 	NULL, --carga_consulta_php
 	NULL, --carga_sql
-	'padrones', --carga_fuente
-	'cadena,numero,fecha', --carga_lista
+	'negocio', --carga_fuente
+	'booleano,cadena,numero,fecha,fecha_hora,hora', --carga_lista
 	NULL, --carga_col_clave
 	NULL, --carga_col_desc
 	NULL, --carga_maestros

@@ -221,7 +221,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'query', --columnas
 	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'2', --orden
+	'3', --orden
 	'Query', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -302,7 +302,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'columnas', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'3', --orden
+	'4', --orden
 	'Columnas Visibles', --etiqueta
 	NULL, --etiqueta_estilo
 	'Los valores se separan por coma (,). Si la clave y descripción varian se separan con barra (/). Por ejemplo a,b,c o a/A,b/B,c/C', --descripcion
@@ -383,7 +383,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'colapsar_niveles', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'4', --orden
+	'5', --orden
 	'Colapsar niveles', --etiqueta
 	NULL, --etiqueta_estilo
 	'Colapsa los corte de control', --descripcion
@@ -467,7 +467,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'id_tipo_reporte', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'5', --orden
+	'6', --orden
 	'Tipo Reporte', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -548,7 +548,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'fuente', --columnas
 	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'6', --orden
+	'2', --orden
 	'Fuente de Datos', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion

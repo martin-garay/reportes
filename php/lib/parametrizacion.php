@@ -57,5 +57,30 @@ class parametrizacion extends comunes
 	function wrap($el){		
 		return '{{'.$el.'}}';
 	}
+
+	function get_info_query($fuente, $sql){
+		$datos = array();
+
+		$sql = self::reemplazar_variables($sql);
+		$select = toba::db($fuente)->get_pdo()->query($sql);		
+		if($select){
+			for ($i=0; $i < $select->columnCount(); $i++) { 		
+				$meta = $select->getColumnMeta($i);
+				// echo $meta['table'] .' : '.$meta['name'] .' : '.$meta['native_type'] .' : '.$meta['pdo_type'].' : '. toba::db()->get_tipo_datos_generico($meta['native_type']);
+				// //var_dump($meta);
+				// echo '<br>';	
+				$descripcion = $meta['table'] .'.'.$meta['name'] .' (' .toba::db()->get_tipo_datos_generico($meta['native_type']).')';
+				//$descripcion = $meta['table'] .'.'.$meta['name'] .' (' . $meta['native_type'] .')';
+				$datos[] = array(
+					'nombre'=>$meta['name'], 
+					'descripcion'=>$descripcion, 
+					'tipo' => toba::db()->get_tipo_datos_generico($meta['native_type'])
+				);
+			}	
+		}
+				
+		return $datos;
+	}	
+
 	
 }

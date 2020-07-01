@@ -15,8 +15,7 @@ class ci_abm_reportes extends reportes_ci
 	//-----------------------------------------------------------------------------------
 
 	function conf__filtro(reportes_ei_filtro $filtro)
-	{
-
+	{				
 		if(isset($this->s__filtro))
 			$filtro->set_datos($this->s__filtro);
 	}
@@ -37,7 +36,8 @@ class ci_abm_reportes extends reportes_ci
 
 	function conf__cuadro(reportes_ei_cuadro $cuadro)
 	{
-		return toba::consulta_php('parametrizacion')->get_reportes();
+		$where = (isset($this->s__filtro)) ? $this->dep('filtro')->get_sql_where() : null;
+		return toba::consulta_php('parametrizacion')->get_reportes($where);
 	}
 
 	function evt__cuadro__seleccion($seleccion)
@@ -45,7 +45,11 @@ class ci_abm_reportes extends reportes_ci
 		$this->relacion()->cargar($seleccion);
 		$this->set_pantalla('pant_edicion');
 	}
-
+	function evt__cuadro__visualizar($seleccion)
+	{		
+		$this->dep('ci_ver')->cargar($seleccion);
+		$this->set_pantalla('pant_visualizacion');
+	}
 	function evt__cuadro__eliminar($seleccion)
 	{
 		$this->relacion()->cargar($seleccion);
@@ -145,6 +149,85 @@ class ci_abm_reportes extends reportes_ci
 	{
 		$this->tabla('reporte_cortes')->procesar_filas($datos);
 	}
+
+	function ajax__get_columnas($parametros, toba_ajax_respuesta $respuesta){
+		$fuente = $parametros[0];
+		$sql = $parametros[1];
+		
+		try {
+			$datos_respuesta = toba::consulta_php('parametrizacion')->get_info_query($fuente, $sql);			
+			if(count($datos_respuesta)>0){
+				foreach ($datos_respuesta as $key => $value) {
+					$aux[] = array(0=>$value['nombre'], 1=>$value['descripcion'], 2=>$value['tipo']);
+				}
+				$datos_respuesta = $aux;
+			}
+				
+		} catch (Exception $e) {
+			$datos_respuesta = array();	
+		}
+		$respuesta->set($datos_respuesta);
+	}
+
+	function extender_objeto_js()
+	{
+		if( $this->get_id_pantalla()=='pant_edicion' ){
+			echo "
+			//scroll en el asistente
+			$('#ef_form_18000088_form_columnascolumnas_opciones').css({'max-height': '200px' ,'overflow': 'auto'});
+			$('#cont_ef_form_18000088_form_columnascolumnas').attr('style','');
+
+			//variable global con los datos de las columnas del query que se traen por ajax. Formato: (campo,descripcion,tipo)
+			var columnas_query = new Array(3);
+		
+			//---- Procesamiento de EFs --------------------------------
+			var form = {$this->dep('form')->objeto_js};
+			var form_asistente = {$this->dep('form_columnas')->objeto_js};
+		
+			form.evt__fuente__procesar = function(es_inicial)
+			{				
+				if(this.ef('fuente').tiene_estado() && this.ef('query').tiene_estado()){
+					var fuente = this.ef('fuente').get_estado();
+					var query = this.ef('query').get_estado();
+					form_asistente.cargar_columnas(fuente,query);
+				}
+			}
+			
+			form.evt__query__procesar = function(es_inicial)
+			{
+				if(this.ef('fuente').tiene_estado() && this.ef('query').tiene_estado()){
+					var fuente = this.ef('fuente').get_estado();
+					var query = this.ef('query').get_estado();
+					form_asistente.cargar_columnas(fuente,query);
+				}
+			}
+		
+			form_asistente.cargar_columnas = function(fuente, query)
+			{
+				var param = Array(2);
+				param[0] = fuente;
+				param[1] = query;
+				{$this->objeto_js}.ajax('get_columnas',param,{$this->objeto_js},form_asistente.respuesta);
+				return false;
+			}
+			form_asistente.respuesta = function(respuesta){
+				columnas_query = respuesta;
+				form_asistente.ef('columnas').set_opciones_rs(respuesta);				
+			}
+		
+		
+		
+			//---- Eventos ---------------------------------------------
+		
+		{$this->objeto_js}.evt__procesar = function()
+		{
+			form_asistente.ef('columnas').seleccionar_todo(false); //por que revienta si hay alguno tildado
+		}
+		
+		";
+		}
+	}
+
 
 }
 ?>

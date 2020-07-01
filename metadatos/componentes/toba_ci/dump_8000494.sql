@@ -177,6 +177,21 @@ INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_
 -- apex_objeto_dependencias
 ------------------------------------------------------------
 
+--- INICIO Grupo de desarrollo 18
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'reportes', --proyecto
+	'18000076', --dep_id
+	'8000494', --objeto_consumidor
+	'8000498', --objeto_proveedor
+	'ci_ver', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+--- FIN Grupo de desarrollo 18
+
 --- INICIO Grupo de desarrollo 8
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'reportes', --proyecto
@@ -220,6 +235,24 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 	NULL, --inicializar
 	NULL  --orden
 );
+--- FIN Grupo de desarrollo 8
+
+--- INICIO Grupo de desarrollo 18
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'reportes', --proyecto
+	'18000075', --dep_id
+	'8000494', --objeto_consumidor
+	'18000088', --objeto_proveedor
+	'form_columnas', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+--- FIN Grupo de desarrollo 18
+
+--- INICIO Grupo de desarrollo 8
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'reportes', --proyecto
 	'8000458', --dep_id
@@ -278,7 +311,20 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 	NULL, --eventos
 	NULL, --subclase
 	NULL, --subclase_archivo
-	NULL, --template
+	'<table>
+	<tbody>
+		<tr>
+			<td valign="top">[dep id=form]</td>
+			<td valign="top">[dep id=form_columnas]</td>
+		</tr>
+		<tr>
+			<td colspan="2">[dep id=form_ml]</td>
+		</tr>
+		<tr>
+			<td colspan="2">[dep id=form_ml_cortes]</td>
+		</tr>
+	</tbody>
+</table>', --template
 	NULL, --template_impresion
 	'8000001'  --punto_montaje
 );
@@ -302,6 +348,28 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 	'8000001'  --punto_montaje
 );
 --- FIN Grupo de desarrollo 8
+
+--- INICIO Grupo de desarrollo 18
+INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, identificador, orden, etiqueta, descripcion, tip, imagen_recurso_origen, imagen, objetos, eventos, subclase, subclase_archivo, template, template_impresion, punto_montaje) VALUES (
+	'reportes', --objeto_ci_proyecto
+	'8000494', --objeto_ci
+	'18000026', --pantalla
+	'pant_visualizacion', --identificador
+	'3', --orden
+	'Pantalla Visualizacion', --etiqueta
+	NULL, --descripcion
+	NULL, --tip
+	'apex', --imagen_recurso_origen
+	NULL, --imagen
+	NULL, --objetos
+	NULL, --eventos
+	NULL, --subclase
+	NULL, --subclase_archivo
+	NULL, --template
+	NULL, --template_impresion
+	'8000001'  --punto_montaje
+);
+--- FIN Grupo de desarrollo 18
 
 ------------------------------------------------------------
 -- apex_objetos_pantalla
@@ -329,6 +397,13 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 );
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'reportes', --proyecto
+	'8000156', --pantalla
+	'8000494', --objeto_ci
+	'3', --orden
+	'18000075'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'reportes', --proyecto
 	'8000157', --pantalla
 	'8000494', --objeto_ci
 	'1', --orden
@@ -340,6 +415,13 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'8000494', --objeto_ci
 	'0', --orden
 	'18000073'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'reportes', --proyecto
+	'18000026', --pantalla
+	'8000494', --objeto_ci
+	'0', --orden
+	'18000076'  --dep_id
 );
 
 ------------------------------------------------------------
@@ -361,5 +443,11 @@ INSERT INTO apex_eventos_pantalla (pantalla, objeto_ci, evento_id, proyecto) VAL
 	'8000157', --pantalla
 	'8000494', --objeto_ci
 	'8000636', --evento_id
+	'reportes'  --proyecto
+);
+INSERT INTO apex_eventos_pantalla (pantalla, objeto_ci, evento_id, proyecto) VALUES (
+	'18000026', --pantalla
+	'8000494', --objeto_ci
+	'8000635', --evento_id
 	'reportes'  --proyecto
 );
