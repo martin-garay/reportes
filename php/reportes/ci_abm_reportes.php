@@ -8,7 +8,7 @@ class ci_abm_reportes extends reportes_ci
 	}
 	function tabla($nombre){
 		return $this->relacion()->tabla($nombre);
-	}	
+	}
 
 	//-----------------------------------------------------------------------------------
 	//---- filtro -----------------------------------------------------------------------
@@ -172,13 +172,39 @@ class ci_abm_reportes extends reportes_ci
 	function extender_objeto_js()
 	{
 		if( $this->get_id_pantalla()=='pant_edicion' ){
+			
+			//echo toba_js::incluir(toba_recurso::js('codemirror/lib/codemirror.js'));			
+
 			echo "
 			//scroll en el asistente
 			$('#ef_form_18000088_form_columnascolumnas_opciones').css({'max-height': '200px' ,'overflow': 'auto'});
 			$('#cont_ef_form_18000088_form_columnascolumnas').attr('style','');
 
 			//variable global con los datos de las columnas del query que se traen por ajax. Formato: (campo,descripcion,tipo)
-			var columnas_query = new Array(3);
+			var columnas_query = new Array(3);				
+
+			window.onload = function() {
+				var mime = 'text/x-pgsql';
+				// get mime type
+				if (window.location.href.indexOf('mime=') > -1) {
+					mime = window.location.href.substr(window.location.href.indexOf('mime=') + 5);
+				}
+				editor = CodeMirror.fromTextArea(document.getElementById('ef_form_8000487_formquery'), {
+					mode: mime,			    
+					indentWithTabs: true,
+					smartIndent: true,
+					lineNumbers: true,
+					matchBrackets : true,
+					autofocus: true,
+					height: '50px'
+				});
+
+				editor.on('blur', function(){
+					form.ef('query').set_estado(editor.getValue());
+				    form.evt__query__procesar(false)
+				});
+			};
+
 		
 			//---- Procesamiento de EFs --------------------------------
 			var form = {$this->dep('form')->objeto_js};

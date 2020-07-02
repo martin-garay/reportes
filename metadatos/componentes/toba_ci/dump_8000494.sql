@@ -309,8 +309,8 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 	NULL, --imagen
 	NULL, --objetos
 	NULL, --eventos
-	NULL, --subclase
-	NULL, --subclase_archivo
+	'pant_edicion_reporte', --subclase
+	'reportes/pant_edicion_reporte.php', --subclase_archivo
 	'<table>
 	<tbody>
 		<tr>
